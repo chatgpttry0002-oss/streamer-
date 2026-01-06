@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StreamVault - Premium Streaming</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="animated-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <!-- Landing Page -->
+    <div id="landing-page" class="page active">
+        <nav class="navbar">
+            <div class="logo">
+                <span class="logo-icon">▶</span>
+                <span class="logo-text">StreamVault</span>
+            </div>
+            <div class="nav-links">
+                <a href="#" class="nav-link">Home</a>
+                <a href="#" class="nav-link">Browse</a>
+                <a href="#" class="nav-link">Premium</a>
+            </div>
+        </nav>
+
+        <main class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    <span class="title-line">Unlimited</span>
+                    <span class="title-line gradient-text">Streaming</span>
+                    <span class="title-line">Experience</span>
+                </h1>
+                <p class="hero-subtitle">Watch exclusive content in stunning quality. No ads. No limits. Just pure entertainment.</p>
+                <button id="enter-dashboard" class="cta-button">
+                    <span>Enter Dashboard</span>
+                    <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+            <div class="hero-visual">
+                <div class="floating-cards">
+                    <div class="floating-card fc-1"></div>
+                    <div class="floating-card fc-2"></div>
+                    <div class="floating-card fc-3"></div>
+                </div>
+            </div>
+        </main>
+
+        <div class="stats-bar">
+            <div class="stat">
+                <span class="stat-number">10K+</span>
+                <span class="stat-label">Videos</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">4K</span>
+                <span class="stat-label">Quality</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">0</span>
+                <span class="stat-label">Ads</span>
+            </div>
+            <div class="stat">
+                <span class="stat-number">∞</span>
+                <span class="stat-label">Streaming</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard Page -->
+    <div id="dashboard-page" class="page">
+        <nav class="navbar">
+            <div class="logo" id="dashboard-logo">
+                <span class="logo-icon">▶</span>
+                <span class="logo-text">StreamVault</span>
+            </div>
+            <div class="search-bar">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="M21 21l-4.35-4.35"/>
+                </svg>
+                <input type="text" placeholder="Search videos..." id="search-input">
+            </div>
+            <div class="user-menu">
+                <div class="user-avatar">U</div>
+            </div>
+        </nav>
+
+        <main class="dashboard-main">
+            <section class="featured-section">
+                <h2 class="section-title">
+                    <span class="title-icon">🔥</span>
+                    Featured Content
+                </h2>
+                <div id="video-grid" class="video-grid">
+                    <!-- Video cards will be inserted here -->
+                </div>
+            </section>
+
+            <section class="categories-section">
+                <h2 class="section-title">
+                    <span class="title-icon">📁</span>
+                    Categories
+                </h2>
+                <div class="categories-grid">
+                    <div class="category-card" data-category="music">
+                        <span class="category-icon">🎵</span>
+                        <span class="category-name">Music</span>
+                    </div>
+                    <div class="category-card" data-category="nature">
+                        <span class="category-icon">🌿</span>
+                        <span class="category-name">Nature</span>
+                    </div>
+                    <div class="category-card" data-category="entertainment">
+                        <span class="category-icon">🎬</span>
+                        <span class="category-name">Entertainment</span>
+                    </div>
+                    <div class="category-card" data-category="trending">
+                        <span class="category-icon">🔥</span>
+                        <span class="category-name">Trending</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Video Player Modal -->
+    <div id="player-modal" class="player-modal">
+        <div class="player-backdrop"></div>
+        <div class="player-container">
+            <button id="close-player" class="close-player">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M18 6L6 18M6 6l12 12"/>
+                </svg>
+            </button>
+            
+            <!-- Player Mode Toggle -->
+            <div class="player-mode-toggle">
+                <button id="mode-embed" class="mode-btn active">Embed Player</button>
+                <button id="mode-stream" class="mode-btn">Direct Stream</button>
+            </div>
+            
+            <div class="video-wrapper">
+                <div id="loading-spinner" class="loading-spinner">
+                    <div class="spinner"></div>
+                    <span>Loading stream...</span>
+                </div>
+                
+                <!-- Iframe Player (Default) -->
+                <iframe id="iframe-player" class="iframe-player" allowfullscreen allow="autoplay; fullscreen; encrypted-media"></iframe>
+                
+                <!-- HTML5 Video Player (Alternative) -->
+                <video id="video-player" class="video-player hidden" controls controlsList="nodownload" disablePictureInPicture playsinline>
+                    Your browser does not support video playback.
+                </video>
+            </div>
+            
+            <div class="video-info">
+                <h3 id="player-title">Video Title</h3>
+                <p id="player-description">Video description goes here...</p>
+                <div class="video-meta-info">
+                    <span class="meta-badge" id="player-duration">00:00</span>
+                    <span class="meta-badge" id="player-year">2024</span>
+                    <span class="meta-badge quality-badge">HD</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./script.js"></script>
+</body>
+</html>
